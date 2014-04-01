@@ -1,27 +1,27 @@
 AutoRFConf
 ==========
 
-Automation scripts for [RouteFlow]{https://github.com/CPqD/RouteFlow} Configuration.
+Automation scripts for [RouteFlow](https://github.com/CPqD/RouteFlow) Configuration.
 
 What you need to do is just to edit .conf file for the network topology. This script will generate *topo.py* *ipconf* *config.csv* *rftest* *create* and *rfvm config files* for you.
 
 ---
 
-How to use: sudo python autorf.py rftestName rftopology.conf
+## How to use: sudo python autorf.py rftestName rftopology.conf
 
 
 A sample of .conf file:
-    host
-    h1,h2
-    switch
-    s3,s4,s5,s6
-    connection
-    h1 s3
-    h2 s6
-    s3 s4
-    s4 s6
-    s3 s5
-    s5 s6
+`host
+h1,h2
+switch
+s3,s4,s5,s6
+connection
+h1 s3
+h2 s6
+s3 s4
+s4 s6
+s3 s5
+s5 s6`
 
 And what you should be careful about are:
 - host names should be started with "h", and followed by a number, like h3, h45
