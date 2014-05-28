@@ -317,18 +317,9 @@ exit 0
         switchIndex = 0
         for switch in self.switches:
             switchIndex += 1
-            tmp = str(hex(switchIndex))
-            a = tmp[-3]
-            b = tmp[-2]
-            c = tmp[-1]
-            if (len(tmp)<4):
-                a = 0
-                b = 0
-            elif len(tmp) < 5: 
-                a =0
-            a = int(a)
-            b = int(b)+1
-            c = int(c)
+            a = switchIndex/81
+            b = switchIndex/9+1
+            c = switchIndex%9+1
             switchpath = basepath +"/rfvm"+switch
             if not os.path.exists(switchpath):
                 os.makedirs(switchpath)
@@ -596,20 +587,12 @@ log file /var/log/quagga/ospfd.log
         switchIndex = 0
         for switch in self.switches:
             switchIndex += 1
-            tmp = str(hex(switchIndex))
-            a = tmp[-3]
-            b = tmp[-2]
-            c = tmp[-1]
-            if (len(tmp)<4):
-                a = 0
-                b = 0
-            elif len(tmp) < 5: 
-                a =0
-            a = int(a)
-            b = int(b)+1
-            c = int(c)
+            a = switchIndex/81
+            b = switchIndex/9+1
+            c = switchIndex%9+1
             vm_id = "02"+str(a)+str(b)+str(c)+"0"+str(c)+"0"+str(c)+"0"+str(c)+"0"
-            switch_id = switch[1:]
+            switch_id = int(switch[1:])
+            switch_id = format(switch_id,"x")
             for i in range(self.switch_port[switch]):
                 line = vm_id + ","+ str(i+1)+",0,"+switch_id+","+str(i+1)+"\n"
                 fout.write(line)
